@@ -71,19 +71,19 @@
                             index++;
                         }
                         setTimeout(showText, 100);
+
+                        setTimeout(function() {
+                        document.body.style.backgroundImage = "url('girasoles.jpeg')";
+                        document.body.style.backgroundRepeat = "no-repeat";
+                        document.body.style.backgroundSize = "cover";
+                        document.getElementById("text").innerHTML ="<h1>flores amarillas para ti mi vida</h1>";                    
+                        }, 20000); // Ocultar después de 30 segundos   
                                                 
                     }
                 }
 
                 showText();
-
-                setTimeout(function() {
-                    document.body.style.backgroundImage = "url('girasoles.jpeg')";
-                    document.body.style.backgroundRepeat = "no-repeat";
-                    document.body.style.backgroundSize = "cover";
-                    document.getElementById("text").innerHTML ="<h1>flores amarillas para ti mi vida</h1>";                    
-                }, 20000); // Ocultar después de 30 segundos                
-                
+                                            
             } else {
                 // Calcular los días, horas, minutos y segundos restantes
                 var days = Math.floor(difference / (1000 * 60 * 60 * 24));
