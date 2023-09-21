@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Estilo para la pantalla oscura */
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Estilo para el temporizador */
+        #timer {
+            color: white;
+            font-size: 48px;
+            text-align: center;
+        }
+
+        /* Estilo para el texto */
+        #text {
+            color: white;
+            font-size: 48px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Temporizador -->
+    <div id="timer"></div>
+
+    <!-- Texto -->
+    <div id="text"></div>
+
+      <!-- Imagen de un corazón -->
+    <div id="heart">
+        <img src="heart.png" alt="Corazón" width="100" height="100">
+    </div>
+
+    <script>
+        // Función para actualizar el temporizador
+        function updateTimer() {
+            // Obtener la fecha y hora actual
+            var now = new Date();
+
+            // Obtener la fecha y hora objetivo (21 de septiembre de 2023 a las 16:00)
+            var target = new Date("2023-09-21T16:00:00");
+
+            // Calcular la diferencia en milisegundos entre la fecha y hora actual y la fecha y hora objetivo
+            var difference = target - now;
+
+            difference = 0;
+            // Si el temporizador ha llegado a cero
+            if (difference <= 0) {
+                // Ocultar el temporizador
+                document.getElementById("timer").style.display = "none";
+                document.getElementById("heart").style.display = "none";
+
+                // Mostrar el texto letra por letra
+                var text = ["hola mi gorda hermosa ", "te amo muchisimo ", "y aunque no te pueda dar flores de verdad, ", "quiero darte un regalo que no olvides nunca ", " <3 amor feliz 21 de septiembre"];
+                var index = 0;
+
+                
+                function showText() {
+                    if (index < text.length) {
+                        document.getElementById("text").innerHTML += text[index][0];
+                        text[index] = text[index].substring(1);
+                        if (text[index].length == 0) {
+                            index++;
+                        }
+                        setTimeout(showText, 100);
+                                                
+                    }
+                }
+
+                showText();
+
+                setTimeout(function() {
+                    document.body.style.backgroundImage = "url('girasoles.jpeg')";
+                    document.body.style.backgroundRepeat = "no-repeat";
+                    document.body.style.backgroundSize = "cover";
+                    document.getElementById("text").innerHTML ="<h1>flores amarillas para ti mi vida</h1>";                    
+                }, 20000); // Ocultar después de 30 segundos                
+                
+            } else {
+                // Calcular los días, horas, minutos y segundos restantes
+                var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                // Mostrar el temporizador en el elemento con id "timer"
+                document.getElementById("timer").innerHTML = days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos";
+
+                // Actualizar el temporizador cada segundo
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        // Iniciar el temporizador al cargar la página
+        window.onload = function () {
+            updateTimer();
+        };
+    </script>
+</body>
+
+</html>
