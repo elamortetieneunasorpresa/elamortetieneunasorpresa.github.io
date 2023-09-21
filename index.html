@@ -3,6 +3,9 @@
 
 <head>
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
         /* Estilo para la pantalla oscura */
         body {
             background-color: black;
@@ -10,6 +13,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            font-family: 'Satisfy', cursive;
         }
 
         /* Estilo para el temporizador */
@@ -29,7 +33,7 @@
         #heart {
             display: flex;
             justify-content: center;
-        }
+        }        
     </style>
 </head>
 
@@ -56,7 +60,7 @@
 
             // Calcular la diferencia en milisegundos entre la fecha y hora actual y la fecha y hora objetivo
             var difference = target - now;            
-            
+            difference=0;
             // Si el temporizador ha llegado a cero
             if (difference <= 0) {
                 // Ocultar el temporizador
